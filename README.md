@@ -11,8 +11,8 @@ ChatAudit is a full-stack QA tool that simulates real-time risk analysis of cust
 
 ## 🏗️ Architecture
 
-- **Frontend**: Next.js 14 with TypeScript, Tailwind CSS, and shadcn/ui
-- **Backend**: Ruby on Rails API with SQLite database
+- **Client**: Next.js 14 with TypeScript, Tailwind CSS, and shadcn/ui
+- **Server**: Ruby on Rails API with SQLite database
 - **AI Integration**: Google Gemini 2.5 Flash Lite for chat analysis
 
 ## 📋 Prerequisites
@@ -30,10 +30,10 @@ git clone <repository-url>
 cd chat-audit
 ```
 
-### 2. Backend Setup (Rails API)
+### 2. Server Setup (Rails API)
 
 ```bash
-cd backend
+cd server
 
 # Install dependencies
 bundle install
@@ -46,10 +46,10 @@ bundle exec rails db:seed
 bundle exec rails server -p 3001
 ```
 
-### 3. Frontend Setup (Next.js)
+### 3. Client Setup (Next.js)
 
 ```bash
-cd frontend
+cd client
 
 # Install dependencies
 npm install
@@ -60,7 +60,7 @@ npm run dev
 
 ### 4. Environment Configuration
 
-Create a `.env.local` file in the frontend directory:
+Create a `.env.local` file in the client directory:
 
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:3001/api
@@ -69,10 +69,10 @@ NEXT_PUBLIC_API_URL=http://localhost:3001/api
 #### Google Gemini API Setup
 
 1. **Get an API Key**: Visit [Google AI Studio](https://makersuite.google.com/app/apikey) to create a free API key
-2. **Configure Backend**: Create a `.env` file in the backend directory:
+2. **Configure Server**: Create a `.env` file in the server directory:
 
 ```bash
-cd backend
+cd server
 cp .env.example .env
 ```
 
@@ -100,7 +100,7 @@ The application comes with sample chat data including:
 
 ## 🔧 API Endpoints
 
-### Backend (Rails API)
+### Server (Rails API)
 
 - `GET /api/chats` - List all chats
 - `GET /api/chats/:id` - Get chat details

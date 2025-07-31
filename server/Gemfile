@@ -12,7 +12,7 @@ gem "sqlite3", "~> 1.4"
 # HTTP client for Gemini API
 gem "httparty"
 
-# CORS support for frontend
+# CORS support for client
 gem "rack-cors"
 
 # JSON parsing
