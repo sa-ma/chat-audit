@@ -4,8 +4,8 @@ class GeminiService
   base_uri 'https://generativelanguage.googleapis.com/v1beta'
   
   def initialize
-    @api_key = ENV['GEMINI_API_KEY']
-    raise 'GEMINI_API_KEY environment variable is required' if @api_key.blank?
+    @api_key = Rails.application.credentials.gemini_api_key
+    raise 'GEMINI_API_KEY not found in Rails credentials' if @api_key.blank?
   end
   
   def analyze_chat(transcript)

@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: chat-audit-backend
+    env: docker
+    plan: starter
+    region: oregon
+    buildCommand: echo "Building with Docker..."
+    startCommand: ./bin/docker-entrypoint
+    envVars:
+      - key: RAILS_ENV
+        value: production
+      - key: RAILS_LOG_TO_STDOUT
+        value: true
+      - key: RAILS_SERVE_STATIC_FILES
+        value: true
+      - key: RAILS_MASTER_KEY
+        sync: false
+    healthCheckPath: /up
+    autoDeploy: true 

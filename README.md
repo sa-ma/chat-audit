@@ -46,7 +46,7 @@ bundle exec rails db:seed
 bundle exec rails server -p 3001
 ```
 
-### 3. Client Setup (Next.js)
+### 3. Frontend Setup (Next.js)
 
 ```bash
 cd client
@@ -69,17 +69,21 @@ NEXT_PUBLIC_API_URL=http://localhost:3001/api
 #### Google Gemini API Setup
 
 1. **Get an API Key**: Visit [Google AI Studio](https://makersuite.google.com/app/apikey) to create a free API key
-2. **Configure Server**: Create a `.env` file in the server directory:
+2. **Configure Server**: Add your API key to Rails credentials:
 
 ```bash
 cd server
-cp .env.example .env
+bundle exec rails credentials:edit
 ```
 
-Then edit the `.env` file and add your Gemini API key:
+Add your Gemini API key to the credentials file:
 
-```env
-GEMINI_API_KEY=your_actual_gemini_api_key_here
+```yaml
+# Used as the base secret for all MessageVerifiers in Rails, including the one protecting cookies.
+secret_key_base: [your-secret-key-base]
+
+# API Keys
+gemini_api_key: your_actual_gemini_api_key_here
 ```
 
 **Note**: A valid Gemini API key is required for the application to function.
@@ -136,5 +140,3 @@ The application comes with sample chat data including:
   "analyzed_at": "2024-01-01T12:00:00Z"
 }
 ```
-
-**Note**: This is a demonstration application. For production use, ensure proper security measures, API key management, and compliance with relevant regulations. 
